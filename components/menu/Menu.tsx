@@ -16,10 +16,23 @@ const subMenuData = [
     {id:4, name:"Shoes", doc_count:120},
 ];
 
+type itemType = {
+    id: number;
+    name: string;
+    url: string;
+    subMenu?: undefined;
+} | {
+    id: number;
+    name: string;
+    subMenu: boolean;
+    url?: any;
+}
+
 const Menu = ({showCategoryMenu,setShowCategoryMenu}:any) => {
   return (
     <ul className='hidden md:flex items-center gap-8 font-medium text-black'>
-        {data.map((item) => {
+        {data.map((item:itemType) => {
+           
             return (
                 <React.Fragment key={item.id}>
                     {!!item?.subMenu ? (
